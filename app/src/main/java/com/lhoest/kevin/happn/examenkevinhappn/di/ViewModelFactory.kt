@@ -1,0 +1,14 @@
+package com.lhoest.kevin.happn.examenkevinhappn.di
+
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
+import kevin.repository.DayRepository
+import kevin.viewmodel.ForecastViewModel
+import javax.inject.Inject
+
+class ViewModelFactory @Inject constructor(private val dayRepo: DayRepository) : ViewModelProvider.Factory {
+
+    override fun <T : ViewModel?> create(modelClass: Class<T>): T {
+        return ForecastViewModel(dayRepo) as T
+    }
+}

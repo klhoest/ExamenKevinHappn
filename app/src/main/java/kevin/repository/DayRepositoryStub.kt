@@ -4,6 +4,7 @@ import io.reactivex.Observable
 import kevin.domain.model.Day
 import kevin.domain.model.Main
 import kevin.domain.model.Weather
+import kotlinx.coroutines.delay
 import javax.inject.Inject
 
 
@@ -14,6 +15,7 @@ class DayRepositoryStub @Inject constructor() : DayRepository {
         val itemList = listOf(
                 Day(1485799200, stubMain1, listOf(stubWeather), null, null, null, null, null)
         )
+        delay(3000)
         return itemList
     }
 }
