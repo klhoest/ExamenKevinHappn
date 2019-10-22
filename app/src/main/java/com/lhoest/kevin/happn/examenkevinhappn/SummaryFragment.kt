@@ -2,13 +2,13 @@ package com.lhoest.kevin.happn.examenkevinhappn
 
 import android.content.Context
 import android.os.Bundle
-import android.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 
 import com.lhoest.kevin.happn.examenkevinhappn.dummy.DummyContent
 import com.lhoest.kevin.happn.examenkevinhappn.dummy.DummyContent.DummyItem
