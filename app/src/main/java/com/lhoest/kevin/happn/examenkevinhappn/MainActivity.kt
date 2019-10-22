@@ -8,7 +8,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
 import com.lhoest.kevin.happn.examenkevinhappn.di.DaggerMainComponent
 import com.lhoest.kevin.happn.examenkevinhappn.model.Day
-import com.lhoest.kevin.happn.examenkevinhappn.ui.ForecastViewModel
+import com.lhoest.kevin.happn.examenkevinhappn.viewmodel.ForecastViewModel
 import javax.inject.Inject
 
 class MainActivity : FragmentActivity() {

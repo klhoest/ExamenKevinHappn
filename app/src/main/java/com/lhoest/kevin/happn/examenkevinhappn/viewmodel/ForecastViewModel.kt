@@ -1,4 +1,4 @@
-package com.lhoest.kevin.happn.examenkevinhappn.ui
+package com.lhoest.kevin.happn.examenkevinhappn.viewmodel
 
 import androidx.lifecycle.*
 import com.lhoest.kevin.happn.examenkevinhappn.model.Day
