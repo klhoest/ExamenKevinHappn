@@ -1,6 +1,5 @@
 package com.lhoest.kevin.happn.examenkevinhappn.repository
 
-import io.reactivex.Observable
 import com.lhoest.kevin.happn.examenkevinhappn.model.Day
 import com.lhoest.kevin.happn.examenkevinhappn.model.Main
 import com.lhoest.kevin.happn.examenkevinhappn.model.Weather
