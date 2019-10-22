@@ -1,15 +1,19 @@
 package com.lhoest.kevin.happn.examenkevinhappn.datasource.network
 
+import com.lhoest.kevin.happn.examenkevinhappn.constant.Const
 import com.lhoest.kevin.happn.examenkevinhappn.datasource.DayService
+import com.lhoest.kevin.happn.examenkevinhappn.model.Day
 import io.reactivex.Observable
-import kevin.domain.model.Day
 
 
 class DayServiceImpl : DayService {
 
-    val dayApi: DayApi = RetrofitBuilder.provideRetrofit().create(DayApi::class.java)
+    private val dayApi: DayApi = RetrofitBuilder.provideRetrofit().create(DayApi::class.java)
 
-    override fun getFullItemList(): Observable<List<Day>> {
-        return dayApi.getForcast()
+    override fun getDayList(): Observable<List<Day>> {
+        return dayApi.getForecast(Const.ID_PARIS, RetrofitBuilder.API_KEY)
+                .map { forecast ->
+                    forecast.list
+                }
     }
 }

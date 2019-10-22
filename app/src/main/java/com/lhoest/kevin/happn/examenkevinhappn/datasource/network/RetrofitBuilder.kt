@@ -10,7 +10,7 @@ import retrofit2.converter.moshi.MoshiConverterFactory
 class RetrofitBuilder {
 
     companion object {
-        const val BASE_URL = "api.openweathermap.org/data/2.5/weather?q=London,uk&APPID=3cccc41563eac772856ab314db4185e0"
+        const val BASE_URL = "https://api.openweathermap.org"
         const val API_KEY = "3cccc41563eac772856ab314db4185e0"
 
         fun provideRetrofit(): Retrofit {

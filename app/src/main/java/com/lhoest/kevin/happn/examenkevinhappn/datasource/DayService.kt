@@ -1,7 +1,7 @@
 package com.lhoest.kevin.happn.examenkevinhappn.datasource
 
+import com.lhoest.kevin.happn.examenkevinhappn.model.Day
 import io.reactivex.Observable
-import kevin.domain.model.Day
 
 
 interface DayService {

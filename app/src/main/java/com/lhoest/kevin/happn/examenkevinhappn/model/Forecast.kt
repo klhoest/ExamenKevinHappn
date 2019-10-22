@@ -6,7 +6,7 @@ data class Forecast(
         @SerializedName("cod") val cod: String?, //200
         @SerializedName("message") val message: Double?, //0.0036
         @SerializedName("cnt") val cnt: Int?, //40
-        @SerializedName("list") val list: List<Day?>?,
+        @SerializedName("list") val list: List<Day>,
         @SerializedName("city") val city: City?
 )
 

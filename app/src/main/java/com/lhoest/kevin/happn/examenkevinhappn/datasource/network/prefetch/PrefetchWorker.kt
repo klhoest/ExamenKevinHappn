@@ -6,7 +6,7 @@ import androidx.work.WorkerParameters
 import androidx.work.workDataOf
 import com.lhoest.kevin.happn.examenkevinhappn.constant.BundleConst
 import com.lhoest.kevin.happn.examenkevinhappn.datasource.DayService
-import kevin.domain.model.Day
+import com.lhoest.kevin.happn.examenkevinhappn.model.Day
 
 
 class PrefetchWorker(appContext: Context, workerParams: WorkerParameters)
@@ -18,6 +18,7 @@ class PrefetchWorker(appContext: Context, workerParams: WorkerParameters)
     }
 
     private fun getForecast(): List<Day> {
-        DayService.getDayList()
+        //DayService.getDayList()
+        throw NotImplementedError()
     }
 }

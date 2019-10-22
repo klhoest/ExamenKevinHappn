@@ -14,11 +14,14 @@ class ForecastViewModel constructor(private val dayRepo: DayRepository) : ViewMo
     /**
      * @get will load the previously downloaded list or download a new one if it is non existent
      */
-    val forcast: LiveData<List<Day>> = liveData {
+    /*val forcast: LiveData<List<Day>> = liveData {
         showLoading.value = true
         val value = dayRepo.getDayList()
         emit(value)
         showLoading.value = false
-    }
+    }*/
+
+    val forecastRx = dayRepo.getDayList()
+
 
 }

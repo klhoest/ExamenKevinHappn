@@ -31,6 +31,7 @@ class MainActivity : FragmentActivity() {
     fun listenViewModel() {
         val nameObserver = Observer<List<Day>> { list -> Log.d(TAG, "list is : ${list.first()}") }
         model.showLoading.observe(this, Observer { isDisplayed -> Log.d(TAG, "showDialog = $isDisplayed") })
-        model.forcast.observe(this, nameObserver)
+        model.forecastRx.subscribe { list: List<Day>? -> Log.i(TAG, list.toString()) }
+        //model.forcast.observe(this, nameObserver)
     }
 }
