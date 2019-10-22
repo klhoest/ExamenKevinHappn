@@ -1,8 +1,8 @@
-package kevin.viewmodel
+package com.lhoest.kevin.happn.examenkevinhappn.ui
 
 import androidx.lifecycle.*
-import kevin.domain.model.Day
-import kevin.repository.DayRepository
+import com.lhoest.kevin.happn.examenkevinhappn.model.Day
+import com.lhoest.kevin.happn.examenkevinhappn.repository.DayRepository
 import javax.inject.Inject
 
 class ForecastViewModel constructor(private val dayRepo: DayRepository) : ViewModel() {

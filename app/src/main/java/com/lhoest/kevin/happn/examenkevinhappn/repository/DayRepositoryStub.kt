@@ -1,9 +1,9 @@
-package kevin.repository
+package com.lhoest.kevin.happn.examenkevinhappn.repository
 
 import io.reactivex.Observable
-import kevin.domain.model.Day
-import kevin.domain.model.Main
-import kevin.domain.model.Weather
+import com.lhoest.kevin.happn.examenkevinhappn.model.Day
+import com.lhoest.kevin.happn.examenkevinhappn.model.Main
+import com.lhoest.kevin.happn.examenkevinhappn.model.Weather
 import kotlinx.coroutines.delay
 import javax.inject.Inject
 

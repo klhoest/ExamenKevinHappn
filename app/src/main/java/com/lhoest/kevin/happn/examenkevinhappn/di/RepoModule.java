@@ -2,8 +2,8 @@ package com.lhoest.kevin.happn.examenkevinhappn.di;
 
 import dagger.Module;
 import dagger.Provides;
-import kevin.repository.DayRepository;
-import kevin.repository.DayRepositoryStub;
+import com.lhoest.kevin.happn.examenkevinhappn.repository.DayRepository;
+import com.lhoest.kevin.happn.examenkevinhappn.repository.DayRepositoryStub;
 
 @Module
 public class RepoModule {

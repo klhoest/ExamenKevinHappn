@@ -1,4 +1,4 @@
-package kevin.domain.model
+package com.lhoest.kevin.happn.examenkevinhappn.model
 
 import com.google.gson.annotations.SerializedName
 

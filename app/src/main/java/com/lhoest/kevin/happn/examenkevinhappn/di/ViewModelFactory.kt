@@ -2,8 +2,8 @@ package com.lhoest.kevin.happn.examenkevinhappn.di
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import kevin.repository.DayRepository
-import kevin.viewmodel.ForecastViewModel
+import com.lhoest.kevin.happn.examenkevinhappn.repository.DayRepository
+import com.lhoest.kevin.happn.examenkevinhappn.ui.ForecastViewModel
 import javax.inject.Inject
 
 class ViewModelFactory @Inject constructor(private val dayRepo: DayRepository) : ViewModelProvider.Factory {
