@@ -9,9 +9,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.ViewModelProviders
+import com.lhoest.kevin.happn.examenkevinhappn.di.DaggerMainComponent
 
 import com.lhoest.kevin.happn.examenkevinhappn.dummy.DummyContent
 import com.lhoest.kevin.happn.examenkevinhappn.dummy.DummyContent.DummyItem
+import com.lhoest.kevin.happn.examenkevinhappn.viewmodel.ForecastViewModel
+import javax.inject.Inject
 
 /**
  * A fragment representing a list of Items.
@@ -23,10 +28,18 @@ class SummaryFragment : Fragment() {
     // TODO: Customize parameters
     private var columnCount = 1
 
+    @Inject
+    lateinit var viewModelFactory: ViewModelProvider.Factory
+    lateinit var model: ForecastViewModel
     private var listener: OnListFragmentInteractionListener? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        this.activity?.let {activity ->
+            val component = DaggerMainComponent.create()
+            viewModelFactory = component.viewModelFactory
+            model = ViewModelProviders.of(activity, viewModelFactory)[ForecastViewModel::class.java]
+        }
 
         arguments?.let {
             columnCount = it.getInt(ARG_COLUMN_COUNT)

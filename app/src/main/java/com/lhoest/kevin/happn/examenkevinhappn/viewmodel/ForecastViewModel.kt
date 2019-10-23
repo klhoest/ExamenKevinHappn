@@ -7,6 +7,8 @@ import javax.inject.Inject
 
 class ForecastViewModel constructor(private val dayRepo: DayRepository) : ViewModel() {
 
+    var dayList: List<Day>? = null
+
     val showLoading: MutableLiveData<Boolean> by lazy {
         MutableLiveData<Boolean>()
     }
@@ -14,9 +16,10 @@ class ForecastViewModel constructor(private val dayRepo: DayRepository) : ViewMo
     /**
      * @get will load the previously downloaded list or download a new one if it is non existent
      */
-    val forcast: LiveData<List<Day>> = liveData {
+    val forcast: LiveData<List<SummaryViewHolder>> = liveData {
         showLoading.value = true
-        val value = dayRepo.getDayList()
+        dayList = dayRepo.getDayList()
+        val value = dayList!!.map { day -> SummaryViewHolder(day) }
         emit(value)
         showLoading.value = false
     }
