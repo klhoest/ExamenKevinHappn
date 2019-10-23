@@ -7,9 +7,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
 import com.lhoest.kevin.happn.examenkevinhappn.di.DaggerMainComponent
-import com.lhoest.kevin.happn.examenkevinhappn.model.Day
 import com.lhoest.kevin.happn.examenkevinhappn.viewmodel.ForecastViewModel
-import com.lhoest.kevin.happn.examenkevinhappn.viewmodel.SummaryViewHolder
 import javax.inject.Inject
 
 class MainActivity : FragmentActivity() {
@@ -30,8 +28,6 @@ class MainActivity : FragmentActivity() {
     }
 
     fun listenViewModel() {
-        val nameObserver = Observer<List<SummaryViewHolder>> { list -> Log.d(TAG, "list is : ${list.first()}") }
         model.showLoading.observe(this, Observer { isDisplayed -> Log.d(TAG, "showDialog = $isDisplayed") })
-        model.forcast.observe(this, nameObserver)
     }
 }

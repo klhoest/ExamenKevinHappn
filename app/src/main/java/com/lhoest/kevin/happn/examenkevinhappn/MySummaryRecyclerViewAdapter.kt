@@ -11,22 +11,29 @@ import com.lhoest.kevin.happn.examenkevinhappn.dummy.DummyContent.DummyItem
 import com.lhoest.kevin.happn.examenkevinhappn.viewmodel.ForecastViewModel
 
 import kotlinx.android.synthetic.main.fragment_summary.view.*
+import com.lhoest.kevin.happn.examenkevinhappn.viewmodel.SummaryViewHolder
+import androidx.recyclerview.widget.DiffUtil
 
-/**
- * [RecyclerView.Adapter] that can display a [DummyItem]
- * TODO: Replace the implementation with code for your data type.
- */
 class MySummaryRecyclerViewAdapter(
-        private val mValues: List<DummyItem>,
         private val viewModel: ForecastViewModel)
     : RecyclerView.Adapter<MySummaryRecyclerViewAdapter.ViewHolder>() {
 
     private val mOnClickListener: View.OnClickListener
+    private var data: MutableList<SummaryViewHolder> = ArrayList()
 
     init {
         mOnClickListener = View.OnClickListener { v ->
             val item = v.tag as DummyItem
             viewModel.onSummaryItemClicked(item)
+        }
+    }
+
+    fun setData(newData: MutableList<SummaryViewHolder>?) {
+        newData?.let {
+            val postDiffCallback = SummaryDiffCallback(data, it)
+            val diffResult = DiffUtil.calculateDiff(postDiffCallback)
+            diffResult.dispatchUpdatesTo(this)
+            data = newData
         }
     }
 
@@ -37,9 +44,9 @@ class MySummaryRecyclerViewAdapter(
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val item = mValues[position]
-        holder.titleTv.text = item.id
-        holder.subtitleTv.text = item.content
+        val item = data[position]
+        holder.titleTv.text = item.title
+        holder.subtitleTv.text = item.subTitle
 
         with(holder.mView) {
             tag = item
@@ -47,7 +54,7 @@ class MySummaryRecyclerViewAdapter(
         }
     }
 
-    override fun getItemCount(): Int = mValues.size
+    override fun getItemCount(): Int = data.size
 
     inner class ViewHolder(val mView: View) : RecyclerView.ViewHolder(mView) {
         val titleTv: TextView = mView.title
@@ -56,6 +63,22 @@ class MySummaryRecyclerViewAdapter(
 
         override fun toString(): String {
             return super.toString() + " '" + subtitleTv.text + "'"
+        }
+    }
+
+    //inspired of https://github.com/guenodz/livedata-recyclerview-sample/blob/master/app/src/main/java/me/guendouz/livedata_recyclerview/PostsAdapter.java
+    private inner class SummaryDiffCallback(private val oldItem: List<SummaryViewHolder>, private val newPosts: List<SummaryViewHolder>) : DiffUtil.Callback() {
+
+        override fun getOldListSize(): Int = oldItem.size
+
+        override fun getNewListSize(): Int = newPosts.size
+
+        override fun areItemsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
+            return areContentsTheSame(oldItemPosition, newItemPosition)
+        }
+
+        override fun areContentsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
+            return oldItem[oldItemPosition] == newPosts[newItemPosition]
         }
     }
 }
