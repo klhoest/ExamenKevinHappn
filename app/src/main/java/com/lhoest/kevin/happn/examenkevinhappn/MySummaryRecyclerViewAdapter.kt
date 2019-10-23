@@ -7,19 +7,18 @@ import android.view.ViewGroup
 import android.widget.TextView
 
 
-import com.lhoest.kevin.happn.examenkevinhappn.SummaryFragment.OnListFragmentInteractionListener
 import com.lhoest.kevin.happn.examenkevinhappn.dummy.DummyContent.DummyItem
+import com.lhoest.kevin.happn.examenkevinhappn.viewmodel.ForecastViewModel
 
 import kotlinx.android.synthetic.main.fragment_summary.view.*
 
 /**
- * [RecyclerView.Adapter] that can display a [DummyItem] and makes a call to the
- * specified [OnListFragmentInteractionListener].
+ * [RecyclerView.Adapter] that can display a [DummyItem]
  * TODO: Replace the implementation with code for your data type.
  */
 class MySummaryRecyclerViewAdapter(
         private val mValues: List<DummyItem>,
-        private val mListener: OnListFragmentInteractionListener?)
+        private val viewModel: ForecastViewModel)
     : RecyclerView.Adapter<MySummaryRecyclerViewAdapter.ViewHolder>() {
 
     private val mOnClickListener: View.OnClickListener
@@ -27,9 +26,7 @@ class MySummaryRecyclerViewAdapter(
     init {
         mOnClickListener = View.OnClickListener { v ->
             val item = v.tag as DummyItem
-            // Notify the active callbacks interface (the activity, if the fragment is attached to
-            // one) that an item has been selected.
-            mListener?.onListFragmentInteraction(item)
+            viewModel.onSummaryItemClicked(item)
         }
     }
 

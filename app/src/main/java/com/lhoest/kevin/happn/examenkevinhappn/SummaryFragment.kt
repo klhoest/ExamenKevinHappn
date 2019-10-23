@@ -20,8 +20,6 @@ import javax.inject.Inject
 
 /**
  * A fragment representing a list of Items.
- * Activities containing this fragment MUST implement the
- * [SummaryFragment.OnListFragmentInteractionListener] interface.
  */
 class SummaryFragment : Fragment() {
 
@@ -30,15 +28,14 @@ class SummaryFragment : Fragment() {
 
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
-    lateinit var model: ForecastViewModel
-    private var listener: OnListFragmentInteractionListener? = null
+    lateinit var viewModel: ForecastViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         this.activity?.let {activity ->
             val component = DaggerMainComponent.create()
             viewModelFactory = component.viewModelFactory
-            model = ViewModelProviders.of(activity, viewModelFactory)[ForecastViewModel::class.java]
+            viewModel = ViewModelProviders.of(activity, viewModelFactory)[ForecastViewModel::class.java]
         }
 
         arguments?.let {
@@ -57,40 +54,10 @@ class SummaryFragment : Fragment() {
                     columnCount <= 1 -> LinearLayoutManager(context)
                     else -> GridLayoutManager(context, columnCount)
                 }
-                adapter = MySummaryRecyclerViewAdapter(DummyContent.ITEMS, listener)
+                adapter = MySummaryRecyclerViewAdapter(DummyContent.ITEMS, viewModel)
             }
         }
         return view
-    }
-
-    override fun onAttach(context: Context) {
-        super.onAttach(context)
-        if (context is OnListFragmentInteractionListener) {
-            listener = context
-        } else {
-            throw RuntimeException(context.toString() + " must implement OnListFragmentInteractionListener")
-        }
-    }
-
-    override fun onDetach() {
-        super.onDetach()
-        listener = null
-    }
-
-    /**
-     * This interface must be implemented by activities that contain this
-     * fragment to allow an interaction in this fragment to be communicated
-     * to the activity and potentially other fragments contained in that
-     * activity.
-     *
-     *
-     * See the Android Training lesson
-     * [Communicating with Other Fragments](http://developer.android.com/training/basics/fragments/communicating.html)
-     * for more information.
-     */
-    interface OnListFragmentInteractionListener {
-        // TODO: Update argument type and name
-        fun onListFragmentInteraction(item: DummyItem?)
     }
 
     companion object {

@@ -1,6 +1,7 @@
 package com.lhoest.kevin.happn.examenkevinhappn.viewmodel
 
 import androidx.lifecycle.*
+import com.lhoest.kevin.happn.examenkevinhappn.dummy.DummyContent
 import com.lhoest.kevin.happn.examenkevinhappn.model.Day
 import com.lhoest.kevin.happn.examenkevinhappn.repository.DayRepository
 import javax.inject.Inject
@@ -22,6 +23,10 @@ class ForecastViewModel constructor(private val dayRepo: DayRepository) : ViewMo
         val value = dayList!!.map { day -> SummaryViewHolder(day) }
         emit(value)
         showLoading.value = false
+    }
+
+    fun onSummaryItemClicked(item: DummyContent.DummyItem) {
+        throw NotImplementedError()
     }
 
 }
