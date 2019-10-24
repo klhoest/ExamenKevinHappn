@@ -1,5 +1,6 @@
 package com.lhoest.kevin.happn.examenkevinhappn.repository
 
+import android.content.Context
 import com.lhoest.kevin.happn.examenkevinhappn.model.Day
 import com.lhoest.kevin.happn.examenkevinhappn.model.Main
 import com.lhoest.kevin.happn.examenkevinhappn.model.Weather
@@ -16,5 +17,9 @@ class DayRepositoryStub @Inject constructor() : DayRepository {
         )
         delay(3000)
         return itemList
+    }
+
+    override fun launchPrefetchWorker(context: Context) {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 }

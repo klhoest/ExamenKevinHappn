@@ -1,5 +1,6 @@
 package com.lhoest.kevin.happn.examenkevinhappn.viewmodel
 
+import android.content.Context
 import androidx.lifecycle.*
 import com.lhoest.kevin.happn.examenkevinhappn.dummy.DummyContent
 import com.lhoest.kevin.happn.examenkevinhappn.model.Day
@@ -13,6 +14,10 @@ class ForecastViewModel constructor(private val dayRepo: DayRepository) : ViewMo
 
     val showLoading: MutableLiveData<Boolean> by lazy {
         MutableLiveData<Boolean>()
+    }
+
+    fun start(context: Context) {
+        dayRepo.launchPrefetchWorker(context)
     }
 
     /**

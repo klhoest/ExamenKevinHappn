@@ -24,6 +24,7 @@ class MainActivity : FragmentActivity() {
         val component = DaggerMainComponent.create()
         viewModelFactory = component.viewModelFactory
         model = ViewModelProviders.of(this, viewModelFactory)[ForecastViewModel::class.java]
+        model.start(this)
         listenViewModel()
     }
 
