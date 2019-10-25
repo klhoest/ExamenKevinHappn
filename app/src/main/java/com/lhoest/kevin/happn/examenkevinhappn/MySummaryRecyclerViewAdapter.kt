@@ -7,7 +7,6 @@ import android.view.ViewGroup
 import android.widget.TextView
 
 
-import com.lhoest.kevin.happn.examenkevinhappn.dummy.DummyContent.DummyItem
 import com.lhoest.kevin.happn.examenkevinhappn.viewmodel.ForecastViewModel
 
 import kotlinx.android.synthetic.main.fragment_summary.view.*
@@ -24,8 +23,9 @@ class MySummaryRecyclerViewAdapter(
 
     init {
         mOnClickListener = View.OnClickListener { v ->
-            val item = v.tag as DummyItem
-            viewModel.onSummaryItemClicked(item)
+            val item = v.tag as SummaryViewHolder?
+            item?.let { viewModel.itemClickLiveData.value = it.dateInSec }
+
         }
     }
 
@@ -46,6 +46,7 @@ class MySummaryRecyclerViewAdapter(
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = data[position]
+        holder.id = item.dateInSec
         holder.titleTv.text = item.title
         holder.subtitleTv.text = item.subTitle
         holder.temperature.text = item.temperature
@@ -61,6 +62,7 @@ class MySummaryRecyclerViewAdapter(
     override fun getItemCount(): Int = data.size
 
     inner class ViewHolder(val mView: View) : RecyclerView.ViewHolder(mView) {
+        var id:Int? = null
         val titleTv: TextView = mView.title
         val subtitleTv: TextView = mView.subTitle
         val temperature: TextView = mView.temperature
@@ -79,7 +81,7 @@ class MySummaryRecyclerViewAdapter(
         override fun getNewListSize(): Int = newPosts.size
 
         override fun areItemsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
-            return areContentsTheSame(oldItemPosition, newItemPosition)
+            return oldItem[oldItemPosition].dateInSec == newPosts[newItemPosition].dateInSec
         }
 
         override fun areContentsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {

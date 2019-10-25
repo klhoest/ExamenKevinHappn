@@ -10,6 +10,7 @@ import com.lhoest.kevin.happn.examenkevinhappn.di.DaggerMainComponent
 import com.lhoest.kevin.happn.examenkevinhappn.viewmodel.ForecastViewModel
 import javax.inject.Inject
 
+@Suppress("MemberVisibilityCanBePrivate")
 class MainActivity : FragmentActivity() {
 
     private val TAG: String = this.javaClass.simpleName
@@ -25,9 +26,32 @@ class MainActivity : FragmentActivity() {
         viewModelFactory = component.viewModelFactory
         model = ViewModelProviders.of(this, viewModelFactory)[ForecastViewModel::class.java]
         listenViewModel()
+        if (savedInstanceState == null) {
+            loadFirstFragment()
+        }
     }
 
     fun listenViewModel() {
         model.showLoading.observe(this, Observer { isDisplayed -> Log.d(TAG, "showDialog = $isDisplayed") })
+        model.itemClickLiveData.observe(this, Observer { id -> showDetailFragment(id) })
+    }
+
+    fun loadFirstFragment() {
+        val firstFragment = SummaryFragment()
+        supportFragmentManager.beginTransaction()
+                .add(R.id.fragment_container, firstFragment).commit()
+    }
+
+    fun showDetailFragment(id : Int) {
+        val newFragment = DetailFragment.newInstance(id)
+
+        val transaction = supportFragmentManager.beginTransaction().apply {
+            // Replace whatever is in the fragment_container view with this fragment,
+            // and add the transaction to the back stack so the user can navigate back
+            replace(R.id.fragment_container, newFragment)
+            //addToBackStack(null)
+        }
+        transaction.commit();
+
     }
 }

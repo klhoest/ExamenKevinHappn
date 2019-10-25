@@ -1,7 +1,6 @@
 package com.lhoest.kevin.happn.examenkevinhappn.viewmodel
 
 import androidx.lifecycle.*
-import com.lhoest.kevin.happn.examenkevinhappn.dummy.DummyContent
 import com.lhoest.kevin.happn.examenkevinhappn.model.Day
 import com.lhoest.kevin.happn.examenkevinhappn.repository.DayRepository
 import com.lhoest.kevin.happn.examenkevinhappn.util.ListUtils
@@ -28,8 +27,8 @@ class ForecastViewModel constructor(private val dayRepo: DayRepository) : ViewMo
         showLoading.value = false
     }
 
-    fun onSummaryItemClicked(item: DummyContent.DummyItem) {
-        throw NotImplementedError()
+    val itemClickLiveData: MutableLiveData<Int> by lazy {
+        MutableLiveData<Int>()
     }
 
     fun mapDayListToSummaryList(dayList: List<Day>): List<SummaryViewHolder> {

@@ -12,7 +12,7 @@ data class SummaryViewHolder(val day: Day) : Comparable<SummaryViewHolder> {
     val title: String
     val subTitle: String
     var temperature: String? = null
-    private val dateInSec: Int
+    val dateInSec: Int //used as an id
     val date: Date
 
     init {
