@@ -13,6 +13,7 @@ import com.lhoest.kevin.happn.examenkevinhappn.viewmodel.ForecastViewModel
 import kotlinx.android.synthetic.main.fragment_summary.view.*
 import com.lhoest.kevin.happn.examenkevinhappn.viewmodel.SummaryViewHolder
 import androidx.recyclerview.widget.DiffUtil
+import java.text.DateFormat
 
 class MySummaryRecyclerViewAdapter(
         private val viewModel: ForecastViewModel)
@@ -48,7 +49,8 @@ class MySummaryRecyclerViewAdapter(
         holder.titleTv.text = item.title
         holder.subtitleTv.text = item.subTitle
         holder.temperature.text = item.temperature
-        holder.date.text = item.dateStr
+        //it will format the date according to the device locale (android dependency)
+        holder.date.text = DateFormat.getDateTimeInstance(DateFormat.SHORT, DateFormat.SHORT).format(item.date)
 
         with(holder.mView) {
             tag = item

@@ -2,6 +2,7 @@ package com.lhoest.kevin.happn.examenkevinhappn.viewmodel
 
 import com.lhoest.kevin.happn.examenkevinhappn.model.Day
 import java.text.DecimalFormat
+import java.util.*
 
 
 data class SummaryViewHolder(val day: Day) : Comparable<SummaryViewHolder> {
@@ -12,7 +13,7 @@ data class SummaryViewHolder(val day: Day) : Comparable<SummaryViewHolder> {
     val subTitle: String
     var temperature: String? = null
     private val dateInSec: Int
-    val dateStr: String?
+    val date: Date
 
     init {
         //I do not understand how a day can have multiple weathers in the api
@@ -24,7 +25,8 @@ data class SummaryViewHolder(val day: Day) : Comparable<SummaryViewHolder> {
             temperature = "${df.format(temperatureDouble)} °C"
         }
         dateInSec = day.dt
-        dateStr = day.dtTxt
+        //see https://stackoverflow.com/questions/3371326/java-date-from-unix-timestamp
+        date = Date(dateInSec.toLong()*1000)
     }
 
     override fun compareTo(other: SummaryViewHolder): Int = this.dateInSec - other.dateInSec
