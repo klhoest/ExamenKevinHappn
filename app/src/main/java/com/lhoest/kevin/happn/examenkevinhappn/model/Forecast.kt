@@ -23,7 +23,7 @@ data class Coord(
 )
 
 data class Day(
-        @SerializedName("dt") val dt: Int?, //1485799200
+        @SerializedName("dt") val dt: Int, //1485799200
         @SerializedName("main") val main: Main?,
         @SerializedName("weather") val weather: List<Weather?>?,
         @SerializedName("clouds") val clouds: Clouds?,

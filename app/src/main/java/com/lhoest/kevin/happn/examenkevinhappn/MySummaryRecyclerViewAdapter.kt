@@ -47,6 +47,8 @@ class MySummaryRecyclerViewAdapter(
         val item = data[position]
         holder.titleTv.text = item.title
         holder.subtitleTv.text = item.subTitle
+        holder.temperature.text = item.temperature
+        holder.date.text = item.dateStr
 
         with(holder.mView) {
             tag = item
@@ -60,6 +62,7 @@ class MySummaryRecyclerViewAdapter(
         val titleTv: TextView = mView.title
         val subtitleTv: TextView = mView.subTitle
         val temperature: TextView = mView.temperature
+        val date: TextView = mView.date
 
         override fun toString(): String {
             return super.toString() + " '" + subtitleTv.text + "'"

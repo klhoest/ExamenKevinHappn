@@ -21,7 +21,12 @@ class ForecastViewModel constructor(private val dayRepo: DayRepository) : ViewMo
     val forcast: LiveData<MutableList<SummaryViewHolder>> = liveData {
         showLoading.value = true
         dayList = dayRepo.getDayList()
-        summaryItemList = dayList!!.map { day -> SummaryViewHolder(day) }.toMutableList()
+        summaryItemList = dayList!!
+                .map { day -> SummaryViewHolder(day) }
+                .sorted()
+                .subList(0, 5)
+                .toMutableList()
+
         emit(summaryItemList!!)
         showLoading.value = false
     }
