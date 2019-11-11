@@ -1,5 +1,7 @@
 ## architecture
 L'architecture du projet est basée sur la clean architecture exposée ici.
+https://developer.android.com/jetpack/docs/guide?hl=en#overview
+https://proandroiddev.com/how-to-implement-a-clean-architecture-on-android-2e5e8c8e81fe
 
 ## interface utilisateur
 L'activité principale affiche une recycler view d'items espacés d'une journée Un click sur cet item affichera l'objet data Day sélectionné via Day.toString()
