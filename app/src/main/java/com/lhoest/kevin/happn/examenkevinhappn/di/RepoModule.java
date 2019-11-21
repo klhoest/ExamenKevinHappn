@@ -6,7 +6,6 @@ import dagger.Provides;
 import com.lhoest.kevin.happn.examenkevinhappn.datasource.network.DayServiceImpl;
 import com.lhoest.kevin.happn.examenkevinhappn.repository.DayRepository;
 import com.lhoest.kevin.happn.examenkevinhappn.repository.DayRepositoryImpl;
-import com.lhoest.kevin.happn.examenkevinhappn.repository.DayRepositoryStub;
 
 @Module
 public class RepoModule {

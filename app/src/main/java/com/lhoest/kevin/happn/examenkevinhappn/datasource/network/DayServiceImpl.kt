@@ -9,7 +9,7 @@ class DayServiceImpl : DayService {
 
     private val dayApi: DayApi = RetrofitBuilder.provideRetrofit().create(DayApi::class.java)
 
-    override suspend fun getDayList(): List<Day> {
+    override suspend fun getDayList(): List<Day>? {
         return dayApi.getForecast(Const.ID_PARIS, RetrofitBuilder.API_KEY).list
     }
 }

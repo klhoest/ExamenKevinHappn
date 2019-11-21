@@ -6,7 +6,7 @@ import com.lhoest.kevin.happn.examenkevinhappn.repository.DayRepository
 import com.lhoest.kevin.happn.examenkevinhappn.util.ListUtils
 import java.util.*
 
-class ForecastViewModel constructor(private val dayRepo: DayRepository) : ViewModel() {
+class ForecastViewModel constructor(val dayRepo: DayRepository) : ViewModel() {
 
     var dayList: List<Day>? = null
     private var summaryItemList: MutableList<SummaryViewHolder>? = null

@@ -1,5 +1,6 @@
 package com.lhoest.kevin.happn.examenkevinhappn.datasource.network.prefetch
 
+/*
 import android.content.Context
 import androidx.work.Worker
 import androidx.work.WorkerParameters
@@ -18,4 +19,4 @@ class PrefetchWorker(appContext: Context, workerParams: WorkerParameters)
         //DayService.getDayList()
         throw NotImplementedError()
     }
-}
+}*/

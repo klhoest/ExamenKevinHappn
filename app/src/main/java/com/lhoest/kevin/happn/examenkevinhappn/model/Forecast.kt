@@ -1,5 +1,8 @@
 package com.lhoest.kevin.happn.examenkevinhappn.model
 
+import androidx.room.Entity
+import androidx.room.Ignore
+import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
 
 data class Forecast(
@@ -22,16 +25,19 @@ data class Coord(
         @SerializedName("lon") val lon: Double? //37.6156
 )
 
+@Entity(tableName = "day_table")
 data class Day(
-        @SerializedName("dt") val dt: Int, //1485799200
-        @SerializedName("main") val main: Main?,
-        @SerializedName("weather") val weather: List<Weather?>?,
-        @SerializedName("clouds") val clouds: Clouds?,
-        @SerializedName("wind") val wind: Wind?,
-        @SerializedName("snow") val snow: Any?,
-        @SerializedName("sys") val sys: Sys?,
-        @SerializedName("dt_txt") val dtTxt: String? //2017-01-30 18:00:00
-)
+        @PrimaryKey var dt: Int, //1485799200
+        @Ignore var main: Main?,
+        @Ignore var weather: List<Weather?>?,
+        @Ignore var clouds: Clouds?,
+        @Ignore var wind: Wind?,
+        @Ignore var snow: Any?,
+        @Ignore var sys: Sys?,
+        @SerializedName("dt_txt") var dtTxt: String? //2017-01-30 18:00:00
+) {
+        constructor() : this(0, null, null, null, null, null, null, "")
+}
 
 data class Clouds(
         @SerializedName("all") val all: Int? //8
@@ -55,7 +61,9 @@ data class Main(
         @SerializedName("grnd_level") val grndLevel: Double?, //1023.48
         @SerializedName("humidity") val humidity: Int?, //79
         @SerializedName("temp_kf") val tempKf: Double? //2.37
-)
+) {
+        var autoId: Int = 0 //does not exist in API
+}
 
 data class Weather(
         @SerializedName("id") val id: Int?, //800

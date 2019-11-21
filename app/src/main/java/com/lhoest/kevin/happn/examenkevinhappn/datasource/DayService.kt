@@ -4,5 +4,5 @@ import com.lhoest.kevin.happn.examenkevinhappn.model.Day
 
 
 interface DayService {
-    suspend fun getDayList(): List<Day>
+    suspend fun getDayList(): List<Day>?
 }
