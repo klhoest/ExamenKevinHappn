@@ -47,7 +47,7 @@ class MainActivity : FragmentActivity() {
 
         val transaction = supportFragmentManager.beginTransaction().apply {
             replace(R.id.fragment_container, newFragment)
-            //addToBackStack(null)
+            addToBackStack(null)
         }
         transaction.commit();
 
