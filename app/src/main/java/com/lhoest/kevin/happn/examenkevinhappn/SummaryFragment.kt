@@ -22,8 +22,7 @@ import javax.inject.Inject
  */
 class SummaryFragment : Fragment() {
 
-    // TODO: Customize parameters
-    private var columnCount = 1
+    private val columnCount = 1
 
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
@@ -35,10 +34,6 @@ class SummaryFragment : Fragment() {
             val component = DaggerMainComponent.create()
             viewModelFactory = component.viewModelFactory
             viewModel = ViewModelProviders.of(activity, viewModelFactory)[ForecastViewModel::class.java]
-        }
-
-        arguments?.let {
-            columnCount = it.getInt(ARG_COLUMN_COUNT)
         }
     }
 
@@ -63,20 +58,5 @@ class SummaryFragment : Fragment() {
 
     private fun listenViewModel() {
         viewModel.forcast.observe(this, Observer { adapter.setData(it) })
-    }
-
-    companion object {
-
-        // TODO: Customize parameter argument names
-        const val ARG_COLUMN_COUNT = "column-count"
-
-        // TODO: Customize parameter initialization
-        @JvmStatic
-        fun newInstance(columnCount: Int) =
-                SummaryFragment().apply {
-                    arguments = Bundle().apply {
-                        putInt(ARG_COLUMN_COUNT, columnCount)
-                    }
-                }
     }
 }
