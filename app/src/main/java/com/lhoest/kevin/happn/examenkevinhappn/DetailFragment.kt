@@ -13,25 +13,19 @@ import com.lhoest.kevin.happn.examenkevinhappn.viewmodel.ForecastViewModel
 import kotlinx.android.synthetic.main.fragment_detail.view.*
 import javax.inject.Inject
 
-private const val ARG_PARAM1 = "param1"
+private const val DAY_ID = "DAY_ID"
 
-/**
- * A simple [Fragment] subclass.
- * Use the [DetailFragment.newInstance] factory method to
- * create an instance of this fragment.
- *
- */
 class DetailFragment : Fragment() {
 
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
     lateinit var viewModel: ForecastViewModel
-    private var param1: Int? = null
+    private var dayId: Int? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
-            param1 = it.getInt(ARG_PARAM1)
+            dayId = it.getInt(DAY_ID)
         }
         this.activity?.let { activity ->
             val component = DaggerMainComponent.create()
@@ -44,7 +38,7 @@ class DetailFragment : Fragment() {
                               savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.fragment_detail, container, false)
         view.raw_content.text = viewModel.dayList
-                ?.find { day -> day.dt == param1 }
+                ?.find { day -> day.dt == dayId }
                 .toString()
         return view
     }
@@ -52,10 +46,10 @@ class DetailFragment : Fragment() {
 
     companion object {
         @JvmStatic
-        fun newInstance(param1: Int) =
+        fun newInstance(dayId: Int) =
                 DetailFragment().apply {
                     arguments = Bundle().apply {
-                        putInt(ARG_PARAM1, param1)
+                        putInt(DAY_ID, dayId)
                     }
                 }
     }

@@ -46,8 +46,6 @@ class MainActivity : FragmentActivity() {
         val newFragment = DetailFragment.newInstance(id)
 
         val transaction = supportFragmentManager.beginTransaction().apply {
-            // Replace whatever is in the fragment_container view with this fragment,
-            // and add the transaction to the back stack so the user can navigate back
             replace(R.id.fragment_container, newFragment)
             //addToBackStack(null)
         }
