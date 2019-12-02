@@ -1,6 +1,6 @@
 package com.lhoest.kevin.happn.examenkevinhappn.repository
 
-import com.lhoest.kevin.happn.examenkevinhappn.datasource.DayService
+import com.lhoest.kevin.happn.examenkevinhappn.datasource.network.DayService
 import com.lhoest.kevin.happn.examenkevinhappn.model.Day
 import javax.inject.Inject
 
