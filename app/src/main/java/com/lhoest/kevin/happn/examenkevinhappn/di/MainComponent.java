@@ -2,7 +2,7 @@ package com.lhoest.kevin.happn.examenkevinhappn.di;
 
 import dagger.Component;
 
-@Component(modules = RepoModule.class)
+@Component()
 public interface MainComponent {
 
     ViewModelFactory getViewModelFactory();
